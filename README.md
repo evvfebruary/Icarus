@@ -1,2 +1,2 @@
 # Icarus
-Launchpad McQuack airline's wants to implement dynamic pricing.
+Man shall never reach his full capacity while chained to the earth. We must take wing and conquer the REST API framework for Django.
