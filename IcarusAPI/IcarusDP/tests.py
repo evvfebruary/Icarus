@@ -62,12 +62,15 @@ class APITestCase(unittest.TestCase):
          ['Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].'])
 
     # Remove when campaign generator will available
+    # def test_valid(self):
+    #     response = self.request_wt(mocked.valid_json)
+    #     answer = mocked.valid_json
+    #     answer['campaign'] = "base"
+    #     self.assertEqual(response['received data'],
+    #                      answer)
     def test_valid(self):
         response = self.request_wt(mocked.valid_json)
-        answer = mocked.valid_json
-        answer['campaign'] = "base"
-        self.assertEqual(response['received data'],
-                         answer)
+        self.assertEqual(response['coupon'], "base")
 
 
 if __name__ == '__main__':
