@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <form id="campaign_form" method="post" action="" >
+
+    {% csrf_token %}
+    {{form}}
+
+    <input type="submit" name="submit" value="add_campaign" class ="btn btn-primary" />
+    </form>
+</head>
+<body>
+
+<table style = "padding-top: 20px;">
+<tr>
+    <th>API REQUESTS </th>
+    <th>SSDKL - CAMPAIGN</th>
+</tr>
+<tr>
+<td style = "border-spacing: 10px;">
+<div id="cnt_coupons">{% for coupon in coupons %}
+<li>
+    <div>
+    ssdkl: {{ coupon.ssdkl }} <br>
+    pcts: {{ coupon.ptcs }}<br>
+    departure: {{ coupon.departure }}<br>
+    origin -> destination: {{ coupon.origin }} -> {{ coupon.destination }}<br>
+    campaign: {{ coupon.campaign }}<br>
+    </div>
+</li>
+{% endfor %}</div>
+</td>
+<td style = "padding-left:50px">
+<div id="cnt_rules">{% for rule in rules %}
+<li>
+    <div>
+    ssdkl: {{ rule.ssdkl }} <br>
+    campaign: {{ rule.campaign }}<br>
+    </div>
+</li>
+{% endfor %}</div>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -7,6 +7,11 @@ from rest_framework import serializers
 from IcarusDP import validator as vd
 
 
+class SSDKLCampaign(models.Model):
+    ssdkl = models.CharField(max_length=200)
+    campaign = models.CharField(max_length=200)
+
+
 class Coupon(models.Model):
     ptcs = models.DictField()
     ssdkl = models.CharField(max_length=200)
