@@ -34,6 +34,6 @@ curl -H "Content-Type: application/json" \
 
 ## Via POST FORM
 Go to  http://127.0.0.1:8000/dpcheck  
-Use the form down below
+Use the form down below ( but dont forget about token ))))
 ![Post form example](https://image.ibb.co/kJgib9/2018-10-13-15-16-59.png)
 
