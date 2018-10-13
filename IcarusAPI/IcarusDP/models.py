@@ -6,8 +6,8 @@ from IcarusDP import validator as vd
 
 class Coupon:
     def __init__(self, ptcs, ssdkl, origin, destination, departure, campaign='base'):
-        self.ptcs = ptcs  # {"ADT": 1,"CHD": 1,"INF": 1}
-        self.ssdkl = ssdkl  # :"9a9c4face96c4314b8ff939f9682be14"
+        self.ptcs = ptcs
+        self.ssdkl = ssdkl
         self.origin = origin
         self.destination = destination
         self.departure = departure or datetime.now()
@@ -45,7 +45,7 @@ class CouponSerializer(serializers.Serializer):
         else:
             if ptcs["ADT"] < 1:
                 raise serializers.ValidationError("Wrong adult passengers fields")
-            if ptcs['CHD'] > 1000 or ptcs['INF'] > 1000: # Don't know anythin about this limit
+            if ptcs['CHD'] > 1000 or ptcs['INF'] > 1000: # Don't know anything about this limit
                 raise serializers.ValidationError("Wow, your lucky guy but no, check cargo airplane")
             return ptcs
 

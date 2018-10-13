@@ -62,10 +62,8 @@ class APITestCase(unittest.TestCase):
     # Remove when campaign generator will available
     def test_valid(self):
         response = self.request_wt(mocked.valid_json)
-        print(response)
         self.assertEqual(response['received data'],
                          mocked.valid_json)
-
 
 
 if __name__ == '__main__':
