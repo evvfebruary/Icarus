@@ -33,7 +33,7 @@ curl -H "Content-Type: application/json" \
 ```
 
 ## Via POSTMAN
-https://www.getpostman.com/
+https://www.getpostman.com/ . 
 Dont forget about TOKEN and valid HEADER.
 ![Post form example](https://preview.ibb.co/b6tD9U/2018-10-13-19-48-18.png)
 
