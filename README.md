@@ -32,8 +32,8 @@ curl -H "Content-Type: application/json" \
    http://127.0.0.1:8000/dpcheck
 ```
 
-## Via POST FORM
-Go to  http://127.0.0.1:8000/dpcheck  
-Use the form down below ( but dont forget about token ))))
-![Post form example](https://image.ibb.co/kJgib9/2018-10-13-15-16-59.png)
+## Via POSTMAN
+https://www.getpostman.com/
+Dont forget about TOKEN and valid HEADER.
+![Post form example](https://preview.ibb.co/b6tD9U/2018-10-13-19-48-18.png)
 
