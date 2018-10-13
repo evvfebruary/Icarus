@@ -38,36 +38,34 @@ class APITestCase(unittest.TestCase):
     def test_get_token_case(self):
         request = rq.post(self.root_url + 'get-api-token/',
                           json={"username": "usertoken", "password": "s7testcasetoken"})
-        self.assertEqual(list(request.json().keys()), ['token'])
+        self.assertEqual(list(request.json().keys()),
+                         ['token'])
 
     def test_token_required_case(self):
         request = rq.post(self.root_url + 'dpcheck/')
-        self.assertEqual(request.json()['detail'], 'Authentication credentials were not provided.')
+        self.assertEqual(request.json()['detail'],
+                         'Authentication credentials were not provided.')
 
     def test_iata_case(self):
         response = self.request_wt(mocked.invalid_iata)
-        self.assertEqual(response['Handled error']['origin'], ['Wrong IATA code'])
+        self.assertEqual(response['Handled error']['origin'],
+                         ['Wrong IATA code'])
 
     def test_adt_case(self):
         response = self.request_wt(mocked.invalid_adt_count)
-        self.assertEqual(response['Handled error']['ptcs'], ['Wrong adult passengers fields'])
+        self.assertEqual(response['Handled error']['ptcs'],
+                         ['Wrong adult passengers fields'])
 
     def test_json_case(self):
         response = self.request_wt(mocked.invalid_json_frm)
-        self.assertEqual(response['Handled error']['ptcs'], ['This field is required.'])
+        self.assertEqual(response['Handled error']['ptcs'],
+                         ['This field is required.'])
 
     def test_departure(self):
         response = self.request_wt(mocked.invalid_departure)
         self.assertEqual(response['Handled error']['departure'],
-         ['Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].'])
+                         ['Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].'])
 
-    # Remove when campaign generator will available
-    # def test_valid(self):
-    #     response = self.request_wt(mocked.valid_json)
-    #     answer = mocked.valid_json
-    #     answer['campaign'] = "base"
-    #     self.assertEqual(response['received data'],
-    #                      answer)
     def test_valid(self):
         response = self.request_wt(mocked.valid_json)
         self.assertEqual(response['coupon'], "base")
