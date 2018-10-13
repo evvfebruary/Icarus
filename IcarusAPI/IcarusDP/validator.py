@@ -1,9 +1,10 @@
 import re
-from collections import namedtuple
 from datetime import datetime as dt
 from calendar import monthrange
 import pandas as pd
 import numpy as np
+import os.path
+
 MONTH_COUNT = 12
 dt_now = dt.now()
 
@@ -30,7 +31,9 @@ def is_iatacode_valid(iata_code):
     if re.match(pattern, iata_code):
         # Can store in database ( but list not to big on the moment )
         # and read from csv faster than create connection, cursor etc to db
-        codes = np.array(pd.read_csv("/Users/evv/s7/Icarus/iata_parser/iata_tables.csv")["Code"])
+        my_path = os.path.abspath(os.path.dirname(__file__))
+        path = os.path.join(my_path, "./resources/iata_tables.csv")
+        codes = np.array(pd.read_csv(path)["Code"])
         if iata_code in codes:
             return True
         else:
