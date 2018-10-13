@@ -28,7 +28,9 @@ class ValidatorTestCase(unittest.TestCase):
 
 class APITestCase(unittest.TestCase):
     root_url = "http://127.0.0.1:8000/"
-    token = '850652a6a769687a7f10af2768e458a4c7464dfd'
+    token = rq.post(root_url + 'get-api-token/',
+                          json={"username": "usertoken", "password": "s7testcasetoken"}).json()['token']
+    print(token)
 
     def request_wt(self, json):
         return rq.post(self.root_url + "dpcheck/", json=json, headers={'Authorization': 'Token ' + self.token}).json()
@@ -62,8 +64,10 @@ class APITestCase(unittest.TestCase):
     # Remove when campaign generator will available
     def test_valid(self):
         response = self.request_wt(mocked.valid_json)
+        answer = mocked.valid_json
+        answer['campaign'] = "base"
         self.assertEqual(response['received data'],
-                         mocked.valid_json)
+                         answer)
 
 
 if __name__ == '__main__':

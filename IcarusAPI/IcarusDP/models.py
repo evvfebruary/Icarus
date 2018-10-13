@@ -1,17 +1,18 @@
-from django.db import models
+# from django.db import models
+from djongo import models
+# from djongo.models import forms
 from datetime import datetime
 from rest_framework import serializers
 from IcarusDP import validator as vd
 
 
-class Coupon:
-    def __init__(self, ptcs, ssdkl, origin, destination, departure, campaign='base'):
-        self.ptcs = ptcs
-        self.ssdkl = ssdkl
-        self.origin = origin
-        self.destination = destination
-        self.departure = departure or datetime.now()
-        self.campaign = campaign
+class Coupon(models.Model):
+    ptcs = models.DictField()
+    ssdkl = models.CharField(max_length=200)
+    origin = models.CharField(max_length=3)
+    destination = models.CharField(max_length=3)
+    departure = models.DateField()
+    campaign = models.CharField(max_length=20, default="base")
 
 
 class CouponSerializer(serializers.Serializer):
@@ -20,9 +21,10 @@ class CouponSerializer(serializers.Serializer):
     origin = serializers.CharField(max_length=3)
     destination = serializers.CharField(max_length=3)
     departure = serializers.DateField()
+    campaign = serializers.CharField(max_length=20, default="base")
 
     def create(self, validated_data):
-        return Coupon(**validated_data)
+        return Coupon.objects.get_or_create(**validated_data)
 
     def validate_origin(self, iata_code):
         if not vd.is_iatacode_valid(iata_code):
