@@ -3,10 +3,21 @@ Man shall never reach his full capacity while chained to the earth. We must take
 
 # POST JSON
 ## Via curl
+
+
+## First need to get TOKEN:
 ```
-> curl --header "Content-Type: application/json" \
->   --request POST \
->   --data '{
+curl --header "Content-Type: application/json" \
+--request POST   \
+--data '{"username":"usertoken","password":"s7testcasetoken"}' \
+http://127.0.0.1:8000/get-api-token/
+```
+
+## Okay, we ready to fight
+```
+curl --header "Content-Type: application/json" \
+   --request POST \
+   --data '{
         "ptcs": {
             "ADT": 1,
             "CHD": 1,
@@ -17,7 +28,7 @@ Man shall never reach his full capacity while chained to the earth. We must take
         "destination": "LED",
         "departure": "2018-07-11"
     }' \
->   http://127.0.0.1:8000/dpcheck
+   http://127.0.0.1:8000/dpcheck
 ```
 
 ## Via POST FORM
