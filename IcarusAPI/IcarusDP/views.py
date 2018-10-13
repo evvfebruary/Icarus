@@ -38,7 +38,6 @@ class CampaignView(APIView):
     def post(self, request):
         cpn = CouponSerializer(data=request.data)
         if cpn.is_valid():
-            print(cpn.create(cpn.validated_data))
             return Response({'received data': cpn.validated_data})
         else:
             return Response({'Handled error': cpn.errors})
