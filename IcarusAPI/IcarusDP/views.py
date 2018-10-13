@@ -70,7 +70,6 @@ class databaseRequestsView(APIView):
             form = forms.SSDKLCampaignForm(request.POST)
             if form.is_valid():
                 ssdcmp = form.save(commit=False)
-
                 ssdcmp.save()
                 return redirect('/coupons')
             else:
