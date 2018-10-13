@@ -15,7 +15,8 @@ http://127.0.0.1:8000/get-api-token/
 
 ## Okay, we ready to fight
 ```
-curl --header "Content-Type: application/json" \
+curl -H "Content-Type: application/json" \
+   -H 'Authorization: Token %YOUR_TOKEN%' \
    --request POST \
    --data '{
         "ptcs": {
