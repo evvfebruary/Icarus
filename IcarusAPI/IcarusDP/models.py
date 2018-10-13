@@ -5,8 +5,8 @@ from IcarusDP import validator as vd
 
 
 class Coupon:
-    def __init__(self, ssdkl, origin, destination, departure, campaign='base'):
-        # self.ptcs = ptcs  # {"ADT": 1,"CHD": 1,"INF": 1}
+    def __init__(self, ptcs, ssdkl, origin, destination, departure, campaign='base'):
+        self.ptcs = ptcs  # {"ADT": 1,"CHD": 1,"INF": 1}
         self.ssdkl = ssdkl  # :"9a9c4face96c4314b8ff939f9682be14"
         self.origin = origin
         self.destination = destination
@@ -15,7 +15,7 @@ class Coupon:
 
 
 class CouponSerializer(serializers.Serializer):
-    # ptcs = serializers.DictField()
+    ptcs = serializers.DictField()
     ssdkl = serializers.CharField(max_length=200)
     origin = serializers.CharField(max_length=3)
     destination = serializers.CharField(max_length=3)
@@ -38,6 +38,16 @@ class CouponSerializer(serializers.Serializer):
         if not vd.is_datetime_valid(datetime):
             raise serializers.ValidationError("Wrong departure time")
         return datetime
+
+    def validate_ptcs(self, ptcs):
+        if list(ptcs.keys()) != ['ADT', 'CHD', 'INF']:
+            raise serializers.ValidationError("Wrong pcts fields, must be ['ADT', 'CHD', 'INF'] but have {}".format(str(ptcs.keys())))
+        else:
+            if ptcs["ADT"] < 1:
+                raise serializers.ValidationError("Wrong adult passengers fields")
+            if ptcs['CHD'] > 1000 or ptcs['INF'] > 1000: # Don't know anythin about this limit
+                raise serializers.ValidationError("Wow, your lucky guy but no, check cargo airplane")
+            return ptcs
 
     def update(self, instance, campaign):
         instance.campaign = campaign

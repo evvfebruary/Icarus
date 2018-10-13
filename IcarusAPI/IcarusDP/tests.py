@@ -1,7 +1,5 @@
-from django.test import TestCase
 import unittest
 import IcarusDP.validator as vd
-from calendar import IllegalMonthError
 from datetime import datetime as dt
 
 
