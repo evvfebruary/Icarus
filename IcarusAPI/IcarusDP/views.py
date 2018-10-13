@@ -40,10 +40,18 @@ class CampaignView(APIView):
     def post(self, request):
         cpn = CouponSerializer(data=request.data)
         if cpn.is_valid():
+            ssdkl = request.data['ssdkl']
+            try:
+                cmp_obj = SSDKLCampaign.objects.get(ssdkl = ssdkl)
+            except SSDKLCampaign.DoesNotExist:
+                cmp_obj = None
+            if cmp_obj:
+                cpn.validated_data['campaign'] = cmp_obj.campaign
             cpn_obj = cpn.create(cpn.validated_data)[0]
-            return Response({'coupon': cpn_obj.ssdkl})
+            return Response({'coupon': cpn_obj.campaign})
         else:
             return Response({'Handled error': cpn.errors})
+
 
 @permission_classes((AllowAny,))
 class databaseRequestsView(APIView):
@@ -57,12 +65,12 @@ class databaseRequestsView(APIView):
                                                           "form":form})
 
     parser_classes = (FormParser,)
+
     def post(self, request):
             form = forms.SSDKLCampaignForm(request.POST)
             if form.is_valid():
                 ssdcmp = form.save(commit=False)
-                # ssdcmp.ssdkl = request.ssdkl
-                # ssdcmp.campaign = request.campaign
+
                 ssdcmp.save()
                 return redirect('/coupons')
             else:

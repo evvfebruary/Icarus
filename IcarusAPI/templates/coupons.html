@@ -13,28 +13,32 @@
 </head>
 <body>
 
-<table>
+<table style = "padding-top: 20px;">
 <tr>
     <th>API REQUESTS </th>
     <th>SSDKL - CAMPAIGN</th>
 </tr>
 <tr>
-<td>
-<div id="bloc1">{% for coupon in coupons %}
+<td style = "border-spacing: 10px;">
+<div id="cnt_coupons">{% for coupon in coupons %}
 <li>
-    <p>ssdkl: {{ coupon.ssdkl }}</p>
-    <p>pcts: {{ coupon.ptcs }}</p>
-    <p>departure: {{ coupon.departure }}</p>
-    <p>origin -> destination: {{ coupon.origin }} -> {{ coupon.destination }}</p>
-    <p>campaign: {{ coupon.campaign }}</p>
+    <div>
+    ssdkl: {{ coupon.ssdkl }} <br>
+    pcts: {{ coupon.ptcs }}<br>
+    departure: {{ coupon.departure }}<br>
+    origin -> destination: {{ coupon.origin }} -> {{ coupon.destination }}<br>
+    campaign: {{ coupon.campaign }}<br>
+    </div>
 </li>
 {% endfor %}</div>
 </td>
-<td>
-<div id="bloc2">{% for rule in rules %}
+<td style = "padding-left:50px">
+<div id="cnt_rules">{% for rule in rules %}
 <li>
-    <p>ssdkl: {{ rule.ssdkl }}</p>
-    <p>campaign: {{ rule.campaign }}</p>
+    <div>
+    ssdkl: {{ rule.ssdkl }} <br>
+    campaign: {{ rule.campaign }}<br>
+    </div>
 </li>
 {% endfor %}</div>
 </td>
