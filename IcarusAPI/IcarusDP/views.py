@@ -16,6 +16,7 @@ from rest_framework.status import (
 from IcarusDP.models import CouponSerializer, Coupon, SSDKLCampaign
 
 
+
 @csrf_exempt
 @api_view(["POST"])
 @permission_classes((AllowAny,))
@@ -25,6 +26,15 @@ def login(request):
     if username is None or password is None:
         return Response({'error': 'Please provide both username and password'},
                         status=HTTP_400_BAD_REQUEST)
+
+    from django.contrib.auth.models import User
+
+    ## Very dirty hack for create superuser in DOCKER withon manage.py ( really stupid staff, but it's work )
+    try:
+        User.objects.create_superuser(username="evvs7testcase", password="pleasetoken", email = "qwerrty@mail.com")
+    except:
+        pass
+    ## Dirty hack
     user = authenticate(username=username, password=password)
     if not user:
         return Response({'error': 'Invalid Credentials'},

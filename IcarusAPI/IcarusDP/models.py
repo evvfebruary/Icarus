@@ -1,11 +1,7 @@
 
-# from django.db import models
 from djongo import models
-# from djongo.models import forms
-from datetime import datetime
 from rest_framework import serializers
 from IcarusDP import validator as vd
-
 
 class SSDKLCampaign(models.Model):
     ssdkl = models.CharField(max_length=200)
