@@ -5,6 +5,8 @@ Man shall never reach his full capacity while chained to the earth. We must take
 
 # Docker
 ```
+git clone https://github.com/evvfebruary/Icarus.git
+cd Icarus/IcarusAPI/
 docker-compose run web python3 manage.py migrate
 docker-compose up
 ```
