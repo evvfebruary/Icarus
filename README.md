@@ -10,8 +10,8 @@ docker-compose up
 ```
 
 ## View for apply sdkl-campaign rules and to show API requests stored in database
-http://localhost:8000/coupons.
-Use form to add SDKL-Campaign rules.
+http://localhost:8000/coupons . 
+Use form to add SDKL-Campaign rules . 
 (submit form).
 
 ## First need to get TOKEN:
@@ -42,7 +42,7 @@ curl -H "Content-Type: application/json" \
 ```
 
 ## Can use POSTMAN
-https://www.getpostman.com/.  
-Dont forget about TOKEN and valid HEADER.
+https://www.getpostman.com/ . 
+Dont forget about TOKEN and valid HEADER . 
 ![Post form example](https://preview.ibb.co/b6tD9U/2018-10-13-19-48-18.png)
 
