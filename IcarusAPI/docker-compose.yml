@@ -1,10 +1,22 @@
-version: '3'
+version: '3.3'
 
 services:
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
+    environment:
+      MONGODB_HOST: db
     volumes:
       - .:/code
     ports:
       - "8000:8000"
+    links:
+      - db
+    networks:
+      - db_net
+  db:
+    image: mongo
+    networks:
+      - db_net
+networks:
+  db_net:
