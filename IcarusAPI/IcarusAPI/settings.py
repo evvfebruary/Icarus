@@ -103,8 +103,8 @@ DATABASES = {
     "default": {
         "ENGINE": "djongo",
         "NAME": "coupon",
-        "HOST": 'localhost',
-        # "HOST": os.environ['MONGODB_HOST'],
+        # "HOST": 'localhost',
+        "HOST": os.environ['MONGODB_HOST'],
         "PORT": 27017
     }
 }

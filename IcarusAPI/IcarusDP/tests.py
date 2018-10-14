@@ -29,7 +29,7 @@ class ValidatorTestCase(unittest.TestCase):
 class APITestCase(unittest.TestCase):
     root_url = "http://127.0.0.1:8000/"
     token = rq.post(root_url + 'get-api-token/',
-                          json={"username": "usertoken", "password": "s7testcasetoken"}).json()['token']
+                          json={"username":"evvs7testcase","password":"pleasetoken"}).json()['token']
     print(token)
 
     def request_wt(self, json):
