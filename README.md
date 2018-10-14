@@ -21,7 +21,7 @@ Use form to add SDKL-Campaign rules.
 curl --header "Content-Type: application/json" \
 --request POST   \
 --data '{"username":"evvs7testcase","password":"pleasetoken"}' \
-http://localhost/get-api-token/
+http://localhost:8000/get-api-token/
 ```
 
 ## Okay, we ready to fight ( API request )
@@ -40,7 +40,7 @@ curl -H "Content-Type: application/json" \
         "destination": "LED",
         "departure": "2018-10-20"
     }' \
-   http://localhost/dpcheck
+   http://localhost:8000/dpcheck
 ```
 
 ## Can use POSTMAN
