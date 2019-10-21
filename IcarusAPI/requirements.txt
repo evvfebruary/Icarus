@@ -1,7 +1,7 @@
 certifi==2018.8.24
 chardet==3.0.4
 dataclasses==0.6
-Django==2.1.2
+Django==2.1.11
 django-guardian==1.4.9
 djangorestframework==3.8.2
 djangorestframework-guardian==0.1.0
