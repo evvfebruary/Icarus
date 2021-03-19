@@ -3,7 +3,7 @@ chardet==3.0.4
 dataclasses==0.6
 Django==2.1.2
 django-guardian==1.4.9
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 djangorestframework-guardian==0.1.0
 djongo==1.2.30
 idna==2.7
